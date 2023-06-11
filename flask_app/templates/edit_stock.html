@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/edit_stock_style.css') }}">
+    <title>Edit Comments about Stock</title>
+</head>
+<body>
+    <div class="nav_container">
+        <h1>Add a Stock</h1>
+    <ul class="nav_bullets_container">
+        <h2 id="first_bullet" class="nav_bullet"><a href="/stocks_table">Stock Table</a></h2>
+        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+    </ul>
+    </div>
+
+    <h1>Edit comments about {{ this_stock.name }}</h1>
+        
+    <p></p>
+
+    {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+{% if messages %}<!-- check if there are any messages -->
+    {% for message in messages %}<!-- loop through the messages -->
+        <p>{{message}}</p><!-- display each message in a paragraph tag -->
+{% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <form action="/stocks/edit_process/{{this_stock.id}}" method="POST">
+    <div>
+        <label class="field_title">Comments</label>
+        <input type="text" name="comments" value="{{this_stock.comments}}"> <!-- for name, use the same name as the column names in the ERD diagram  -->
+    </div>
+    <p></p>
+    <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

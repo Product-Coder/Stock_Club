@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
+    <title>View Selected Stock</title>
+</head>
+<body>
+
+    <div class="nav_container">
+        <h1>Add a Stock</h1>
+    <ul class="nav_bullets_container">
+        <h2 id="first_bullet" class="nav_bullet"><a href="/stocks_table">Stock Table</a></h2>
+        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+    </ul>
+    </div>
+
+
+{% if this_stock.id == none %}
+    <h1>"There aren't any stocks with that ID"</h1>
+{%else%}
+<h1>Welcome, {{logged_user.first_name}}!</h1>
+    <table class="stocks_table">
+        <thead>
+            <th>Stock Name</th>
+            <th>Stock Symbol</th>
+            <th>Enterprise Value to EBITDA</th>
+            <th>Enterprise Value to Revenue</th>
+            <th>Forward P/E</th>
+            <th>Buy/Hold/Sell</th>
+            <th>Commeents</th>
+        </thead>
+        <tbody>
+            <td>{{ this_stock.name }}</td>
+            <td>{{ this_stock.symbol }}</td>
+            <td>{{ this_stock.EV_to_EBITDA }}</td>
+            <td>{{ this_stock.EV_to_Revenue }}</td>
+            <td>{{ this_stock.P_E }}</td>
+            <td>TBD</td>
+            <td>{{ this_stock.comments }}</td>
+        </tbody>
+{% endif %}
+    </table>
+</body>
+</html>

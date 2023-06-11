@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
+    <title>Stocks Table</title>
+</head>
+<body>
+    
+    <div class="nav_container">
+    <h1>Welcome, {{logged_user.first_name}}!</h1>
+    <ul class="nav_bullets_container">
+        <h2 id="first_bullet" class="nav_bullet"><a href="/add_stock_view">Add Stock</a></h2>
+        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+    </ul>
+    </div>
+    
+    <p></p>
+
+    <table class="sortable">
+        <thead class="stocks_table">
+            <th>Stock Symbol</th>
+            <th>Stock Name</th>
+            <th>User who added stock</th>
+            <th >Buy/Hold/Sell</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </thead>
+        <tbody class="stocks_table">
+            {% for Added_Stock in List_Stock_Objects |sort(attribute='symbol') %}
+            <tr>
+                <td>{{ Added_Stock.symbol }}</td>
+                <td>{{ Added_Stock.name }}</td>
+                <td>{{ Added_Stock.selector.first_name }} {{ Added_Stock.selector.last_name }}</td>
+                {% if Added_Stock.P_E != None and Added_Stock.P_E<25 and Added_Stock.EV_to_EBITDA < 25 and Added_Stock.EV_to_Revenue<10 %}
+                <td>Buy</td>
+                {% elif Added_Stock.P_E != None and Added_Stock.P_E<35 and Added_Stock.EV_to_EBITDA < 35 and Added_Stock.EV_to_Revenue<20 %}
+                <td>Hold</td>
+                {% else %}
+                <td>Sell</td>
+                {% endif %}
+                <td>{{ Added_Stock.comments }}</td>
+                <td><a href="/stocks/view/{{Added_Stock.id}}">View</a> 
+                    {% if Added_Stock.selector.id == session["user_id"] %}
+                    <a href="/stocks/edit/{{Added_Stock.id}}">Edit</a> 
+                    <a href="/stocks/delete/{{Added_Stock.id}}">Delete</a> </td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/Add_Stock_Style.css') }}">
+    <title>Add Stock</title>
+</head>
+<body>
+    <div class="nav_container">
+        <h1>Add a Stock</h1>
+    <ul class="nav_bullets_container">
+        <h2 id="first_bullet" class="nav_bullet"><a href="/stocks_table">Stock Table</a></h2>
+        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+    </ul>
+    </div>
+
+
+
+
+
+    {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+{% if messages %}<!-- check if there are any messages -->
+    {% for message in messages %}<!-- loop through the messages -->
+        <p>{{message}}</p><!-- display each message in a paragraph tag -->
+{% endfor %}
+    {% endif %}
+{% endwith %}
+    
+
+    <form action="/add_stock_process" method="POST">
+        <div>
+            <label class="field_title">Stock Symbol</label>
+            <input class="add_stock_fields" id="symbol" type="text" name="symbol"> <!-- for name, use the same name as the column names in the ERD diagram  -->
+        </div>
+        <p></p>
+        <div>
+            <label class="field_title">Stock Name</label>
+            <input class="add_stock_fields" type="text" name="name"> <!-- for name, use the same name as the column names in the ERD diagram  -->
+        </div>
+        <p></p>
+        <div>
+            <label class="field_title">Comments</label>
+            <input class="add_stock_fields" type="text" name="comments"> <!-- for name, use the same name as the column names in the ERD diagram  -->
+        </div>
+        <p></p>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
