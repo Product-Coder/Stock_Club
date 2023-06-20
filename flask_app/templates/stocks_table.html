@@ -7,24 +7,27 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
     <title>Stocks Table</title>
 </head>
+<div class="container"> 
 <body>
-    
+
+<div class="flex_nav_container">
     <div class="nav_container">
-    <h1>Welcome, {{logged_user.first_name}}!</h1>
+    <h1>Welcome to the Stock Picking Club, {{logged_user.first_name}}!</h1>
     <ul class="nav_bullets_container">
         <h2 id="first_bullet" class="nav_bullet"><a href="/add_stock_view">Add Stock</a></h2>
         <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
     </ul>
     </div>
-    
-    <p></p>
+</div>
 
+    <p></p>
+<div class="flex_stocks_table">
     <table class="sortable">
         <thead class="stocks_table">
             <th>Stock Symbol</th>
             <th>Stock Name</th>
             <th>User who added stock</th>
-            <th >Buy/Hold/Sell</th>
+            <th >*Buy/Hold/Sell</th>
             <th>Comments</th>
             <th>Actions</th>
         </thead>
@@ -36,7 +39,7 @@
                 <td>{{ Added_Stock.selector.first_name }} {{ Added_Stock.selector.last_name }}</td>
                 {% if Added_Stock.P_E != None and Added_Stock.P_E<25 and Added_Stock.EV_to_EBITDA < 25 and Added_Stock.EV_to_Revenue<10 %}
                 <td>Buy</td>
-                {% elif Added_Stock.P_E != None and Added_Stock.P_E<35 and Added_Stock.EV_to_EBITDA < 35 and Added_Stock.EV_to_Revenue<20 %}
+                {% elif Added_Stock.P_E != None and Added_Stock.P_E<=35 and Added_Stock.EV_to_EBITDA <= 35 and Added_Stock.EV_to_Revenue<=20 %}
                 <td>Hold</td>
                 {% else %}
                 <td>Sell</td>
@@ -51,6 +54,21 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
+<div class="flex_instructions">
+    <div class="instructions">
+        <p></p>
+        <p></p>
+        <p class="instruction_details">*Buy/Hold/Sell is determined based on the following three financial ratios:</p>
+        <p class="instruction_details">1. Forward P/E</p>
+        <p class="instruction_details">2. EV to EBITDA</p>
+        <p class="instruction_details">3. EV to Revenue</p>
+        <p class="instruction_details">A stock is rated as Buy when Forward P/E is less than 25, EV to EBITDA is less than 25, and EV to Revenue is less than 10. </p>
+        <p class="instruction_details">A stock is rated as Hold when Forward P/E is between 25-35, EV to EBITDA is  between 25-35, and EV to Revenue is between 10-20. </p>
+        <p class="instruction_details">A stock is rated as Sell when Forward P/E is greater than 35 or EV to EBITDA is greater than 35, or EV to Revenue is greater than 20.</p>
+    </div>
+</div>
 
 </body>
+</div>  
 </html>

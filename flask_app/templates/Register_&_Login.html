@@ -8,70 +8,80 @@
     <title>Stock Club</title>
 </head>
 <body>
-        <div class="columns">
-        <div class="register">
-            <p>Register</p>
-            {% with messages = get_flashed_messages(category_filter=["registration"]) %}<!-- declare a variable called messages -->
-                {% if messages %}<!-- check if there are any messages -->
-                    {% for message in messages %}<!-- loop through the messages -->
-                    <p>{{message}}</p><!-- display each message in a paragraph tag -->
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+<div class="container">
 
-            <form action="/register_process" method="post">
-                <div>
-                <label for="first_name">First name:</label>
-                <input type="text" id="first_name" name="first_name">
-                </div>
-                <p></p>
-                <div>
-                <label for="last_name">Last name:</label>
-                <input type="text" id="last_name" name="last_name">
-                </div>
-                <p></p>
-                <div>
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email">
-                </div>
-                <p></p>
-                <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-                </div>
-                <p></p>
-                <div>
-                <label for="confirm_password">Confirm password:</label>
-                <input type="password" id="confirm_password" name="confirm_password">
-                </div>
-                <p></p>
-                <input type="submit" name="register" id="register" value="Register">
-            </form>
-        </div>
-        <div class="login">
-            <p>Log in</p>
-            {% with messages = get_flashed_messages(category_filter=["login"]) %}<!-- declare a variable called messages -->
-            {% if messages %}<!-- check if there are any messages -->
-                {% for message in messages %}<!-- loop through the messages -->
-                <p>{{message}}</p><!-- display each message in a paragraph tag -->
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-            <form action="/login_process" method="post">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email">
-                </div>
-                <p></p>
-                <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-                </div>
-                <p></p>
-                <input type="submit" name="register" id="register" value="Log in">
-            </form>
-        </div>
+    <div class="Welcome">
+    <h1>Welcome to the Stock Picking Club! Please register or log in below:</h1>
     </div>
 
+    <div class="body">
+        
+                <div class="columns">
+                <div class="register">
+                    <p></p>
+                    <h2>Register</h2>
+                    {% with messages = get_flashed_messages(category_filter=["registration"]) %}<!-- declare a variable called messages -->
+                        {% if messages %}<!-- check if there are any messages -->
+                            {% for message in messages %}<!-- loop through the messages -->
+                            <p>{{message}}</p><!-- display each message in a paragraph tag -->
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <form action="/register_process" method="post">
+                        <div>
+                        <label class="form_title" for="first_name">First name:</label>
+                        <input type="text" id="first_name" name="first_name">
+                        </div>
+                        <p></p>
+                        <div>
+                        <label class="form_title" for="last_name">Last name:</label>
+                        <input type="text" id="last_name" name="last_name">
+                        </div>
+                        <p></p>
+                        <div>
+                        <label class="form_title" for="email">Email:</label>
+                        <input type="text" id="email" name="email">
+                        </div>
+                        <p></p>
+                        <div>
+                        <label class="form_title" for="password">Password:</label>
+                        <input type="password" id="password" name="password">
+                        </div>
+                        <p></p>
+                        <div>
+                        <label class="form_title" for="confirm_password">Confirm password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        </div>
+                        <p></p>
+                        <input class="form_title" type="submit" name="register" id="register" value="Register">
+                    </form>
+                </div>
+                <div class="login">
+                    <h2>Log in</h2>
+                    {% with messages = get_flashed_messages(category_filter=["login"]) %}<!-- declare a variable called messages -->
+                    {% if messages %}<!-- check if there are any messages -->
+                        {% for message in messages %}<!-- loop through the messages -->
+                        <p>{{message}}</p><!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                    <form action="/login_process" method="post">
+                        <label class="form_title" for="email">Email:</label>
+                        <input type="text" id="email" name="email">
+                        </div>
+                        <p></p>
+                        <div>
+                        <label class="form_title" for="password">Password:</label>
+                        <input type="password" id="password" name="password">
+                        </div>
+                        <p></p>
+                        <input class="form_title" type="submit" name="register" id="register" value="Log in">
+                    </form>
+                </div>
+            
+    </div>        
+</div>
 
 </body>
 </html>

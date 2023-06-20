@@ -71,9 +71,10 @@ def add_stock_process():
 
     api_link = (f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={request.form['symbol']}&apikey={os.environ.get('alphavantage_API_KEY')}")
 
+   
     response_string = requests.get(api_link)
     raw_data = response_string.json()
-    print(raw_data)
+    print("Raw data for added stock:", raw_data)
 
     Forward_PE = raw_data["ForwardPE"]
     EV_to_EBITDA = raw_data["EVToEBITDA"]

@@ -47,7 +47,7 @@ def register():
 @app.route('/login_process', methods = ["POST"]) 
 def login():
     if not user.User.validate_login(request.form): #return of validate_loging() is "is_valid", so we are saying, "if is_valid is false..."
-        return redirect('/register_and_login')
+        return redirect('/register_&_login_view')
     else:
         data = {
             "email":request.form["email"]#we got email and password from login form

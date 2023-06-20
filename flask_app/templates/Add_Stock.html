@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/Add_Stock_Style.css') }}">
     <title>Add Stock</title>
 </head>
+<div class="container">
 <body>
+<div class="flex_nav">
     <div class="nav_container">
         <h1>Add a Stock</h1>
     <ul class="nav_bullets_container">
@@ -16,9 +18,7 @@
         <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
     </ul>
     </div>
-
-
-
+</div>
 
 
     {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
@@ -30,6 +30,7 @@
 {% endwith %}
     
 
+<div class="flex_form">
     <form action="/add_stock_process" method="POST">
         <div>
             <label class="field_title">Stock Symbol</label>
@@ -47,7 +48,10 @@
         </div>
         <p></p>
         
-        <input type="submit" value="Submit">
+        <input class="form_title" type="submit" value="Submit">
     </form>
+</div>
 </body>
+</div>
+
 </html>
