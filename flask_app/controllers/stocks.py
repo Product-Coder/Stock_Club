@@ -1,7 +1,7 @@
 import requests
 from flask_app import app
 import os
-from flask import render_template, redirect, request, session, jsonify
+from flask import render_template, redirect, request, session, jsonify, flash
 from flask_app.models import stock, user
 from pprint import pprint
 
@@ -73,8 +73,12 @@ def add_stock_process():
 
    
     response_string = requests.get(api_link)
+    print("response_string", response_string)
     raw_data = response_string.json()
     print("Raw data for added stock:", raw_data)
+    if  "ForwardPE" not in raw_data:
+        flash("This stock symbol does not exist. Pleae try again.")
+        return redirect ('/add_stock_view')
 
     Forward_PE = raw_data["ForwardPE"]
     EV_to_EBITDA = raw_data["EVToEBITDA"]

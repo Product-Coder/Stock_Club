@@ -7,14 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/my_style.css') }}">
     <title>View Selected Stock</title>
 </head>
-<div class="container">
+<div class="container_page_height">
 <body>
 <div class="flex_nav_container">
     <div class="nav_container">
-        <h1>Stock Details</h1>
+        <h1 class="Welcome">Stock Details</h1>
     <ul class="nav_bullets_container">
-        <h2 id="first_bullet" class="nav_bullet"><a href="/stocks_table">Stock Table</a></h2>
-        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+        <h2 id="first_bullet" class="nav_bullet"><a class="nav_bullet" href="/stocks_table">Stock Table</a></h2>
+        <h2 id="seccond_bullet" class="nav_bullet"><a class="nav_bullet" href="/logout">Log out</a></h2>
     </ul>
     </div>
 </div>
@@ -26,13 +26,13 @@
 <div class="flex_stocks_table">
     <table class="stocks_table">
         <thead>
-            <th>Stock Name</th>
-            <th>Stock Symbol</th>
-            <th>Enterprise Value to EBITDA</th>
-            <th>Enterprise Value to Revenue</th>
-            <th>Forward P/E</th>
-            <th>Buy/Hold/Sell</th>
-            <th>Commeents</th>
+            <th><h3 class="header_table">Stock Symbol</h3></th>
+            <th><h3 class="header_table">Stock Name</h3></th>
+            <th><h3 class="header_table">*Enterprise Value to EBITDA</h3></th>
+            <th><h3 class="header_table">*Enterprise Value to Revenue</h3></th>
+            <th><h3 class="header_table">*Forward P/E</h3></th>
+            <th><h3 class="header_table">Buy/Hold/Sell</h3></th>
+            <th><h3 class="header_table">Commeents</h3></th>
         </thead>
         <tbody>
             <td>{{ this_stock.name }}</td>
@@ -47,11 +47,15 @@
                 {% else %}
                 <td>Sell</td>
                 {% endif %}
-            <td>{{ this_stock.comments }}</td>
+            <td class="action">{{ this_stock.comments }}</td>
         </tbody>
 {% endif %}
     </table>
+    
+
 </div>
 </body>
+<p id="instruction_details_margin" class="instruction_details">*Data is provided by Alpha Vantage's API</p>
 </div>
+
 </html>

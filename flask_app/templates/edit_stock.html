@@ -8,14 +8,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/edit_stock_style.css') }}">
     <title>Edit Comments about Stock</title>
 </head>
-<div class="container">
+<div class="container_page_height">
 <body>
 <div class="flex_nav_container">   
     <div class="nav_container">
-        <h1>Edit comments about {{ this_stock.name }}</h1>
+        <h1 class="Edit_Comments_Font">Edit comments about {{ this_stock.name }}</h1>
     <ul class="nav_bullets_container">
-        <h2 id="first_bullet" class="nav_bullet"><a href="/stocks_table">Stock Table</a></h2>
-        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+        <h2 id="first_bullet" class="nav_bullet"><a class="bullet_font" href="/stocks_table">Stock Table</a></h2>
+        <h2 id="seccond_bullet" class="nav_bullet"><a class="bullet_font" href="/logout">Log out</a></h2>
     </ul>
     </div>
 </div> 
@@ -25,7 +25,7 @@
     {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
 {% if messages %}<!-- check if there are any messages -->
     {% for message in messages %}<!-- loop through the messages -->
-        <p>{{message}}</p><!-- display each message in a paragraph tag -->
+        <p class="validations_update_comment">{{message}}</p><!-- display each message in a paragraph tag -->
 {% endfor %}
     {% endif %}
 {% endwith %}
@@ -33,11 +33,11 @@
 <div class="flex_form">
     <form action="/stocks/edit_process/{{this_stock.id}}" method="POST">
     <div>
-        <label class="field_title">Comments</label>
-        <input type="text" name="comments" value="{{this_stock.comments}}"> <!-- for name, use the same name as the column names in the ERD diagram  -->
+        <label id="comments_font_color" class="field_title">Comments</label>
+        <input class="comment_input" type="text" name="comments" value="{{this_stock.comments}}"> <!-- for name, use the same name as the column names in the ERD diagram  -->
     </div>
     <p></p>
-    <input class="form_title" type="submit" value="Submit">
+    <input id="button_reg" class="form_title" type="submit" value="Submit">
     </form>
 </div>
 </body>

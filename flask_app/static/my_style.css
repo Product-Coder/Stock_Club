@@ -1,10 +1,27 @@
+
 .container {
-    background-color: silver;
+    background-image: linear-gradient(blue, rgb(4, 91, 91));
+    height: auto;
+}
+
+.container_page_height {
+    background-image: linear-gradient(blue, rgb(4, 91, 91));
+    height: 100vh;
 }
 
 .Welcome {
     display: flex;
     justify-content: center;
+    color: rgba(255, 255, 255, 0.933);
+}
+
+.Register_and_Login {
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    margin-right: 60px;
 }
 
 .body {
@@ -13,6 +30,7 @@
 }
 .form_title {
     font-weight: bold;
+    color: rgba(255, 255, 255, 0.933);
 }
 
 .flex_nav_container{
@@ -48,6 +66,7 @@ justify-content: center;
 
 .instruction_details {
     font-weight: bold;
+    color: rgba(255, 255, 255, 0.933);
 }
 
 .stocks_table {
@@ -71,20 +90,112 @@ table th + th { border-left:3px solid black; }
 
 .nav_bullet {
     list-style-type: none;
-    width: 120px;
+    width: auto;
     height: 30px;
     font-weight: bold;
-    color: black;
+    color: rgba(255, 255, 255, 0.933);
+    background-color: teal;
+    border-radius: 20%;
+    text-align: center;
+}
+
+input {
+    margin-left: 10px;
+}
+
+.view {
+    width: 800px;
+    height: 60px;
+    size: 40pt;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.933);
+    /* background-color: blueviolet; */
+    background-color: green;
+    border-radius: 40%;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.update {
+    width: 800px;
+    height: 60px;
+    size: 40pt;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.933);
+    /* background-color: blueviolet; */
+    background-color: blue;
+    border-radius: 40%;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.delete {
+    width: 800px;
+    height: 60px;
+    size: 40pt;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.933);
+    /* background-color: blueviolet; */
+    background-color: darkred;
+    border-radius: 40%;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.action {
+    height: 40px;
+    width: 200px;
+}
+
+
+
+#Action_Header_Width {
+    width: 300px;
+}
+
+#instruction_details_margin {
+    margin-left: 200px;
+}
+
+.validations_add {
+    color: rgba(255, 255, 255, 0.933);
+    margin-left: 600px;
+}
+
+.validations_reg {
+    color: rgba(255, 255, 255, 0.933);
+}
+
+.validations_login {
+    color: rgba(255, 255, 255, 0.933);
+}
+
+.validations_update_comment{
+    color: rgba(255, 255, 255, 0.933);
+    margin-left: 600px;
+}
+
+.Edit_Comments_Font {
+    color: rgba(255, 255, 255, 0.933);
+}
+
+#comments_font_color {
+    color: rgba(255, 255, 255, 0.933);
+}
+
+.comment_input {
+    width: 300px;
 }
 
 .nav_container {
-    background-color: silver;
     display: flex;
     align-items: center;
 }
 
 .add_stock_nav {
-    background-color: silver;
     display: flex;
     align-items: center;
 }
@@ -95,6 +206,15 @@ table th + th { border-left:3px solid black; }
 
 #first_bullet {
     margin-right: 20px;
+    padding: 10px;
+}
+
+#seccond_bullet {
+    padding: 10px;
+}
+
+.bullet_font {
+    color: rgba(255, 255, 255, 0.933);
 }
 
 tr:nth-child(even) {
@@ -106,6 +226,43 @@ tr:nth-child(odd) {
 }
 
 th {
-    background-color: peachpuff;
+    background-color: silver;
 }
 
+td {
+    height: 40px;
+}
+
+.button_login {
+    width: 60px;
+    height: 30px;
+    font-weight: bold;
+    background-color: azure;
+}
+
+.button_reg {
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: azure;
+}
+
+#button_reg {
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: azure;
+    color: black;
+}
+
+.button_add_stock {
+    width: 60px;
+    height: 30px;
+    font-weight: bold;
+    background-color: azure;
+}
+
+.header_table {
+    margin-left: 5px;
+    margin-right: 5px;
+}

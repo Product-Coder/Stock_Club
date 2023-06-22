@@ -12,27 +12,29 @@
 
 <div class="flex_nav_container">
     <div class="nav_container">
-    <h1>Welcome to the Stock Picking Club, {{logged_user.first_name}}!</h1>
+    <h1 class="Welcome">Welcome to the Stock Picking Club, {{logged_user.first_name}}!</h1>
     <ul class="nav_bullets_container">
-        <h2 id="first_bullet" class="nav_bullet"><a href="/add_stock_view">Add Stock</a></h2>
-        <h2 class="nav_bullet"><a href="/logout">Log out</a></h2>
+        <h2 id="first_bullet" class="nav_bullet"><a class="nav_bullet" href="/add_stock_view">Add Stock</a></h2>
+        <h2 id = "seccond_bullet" class="nav_bullet"><a class="nav_bullet" href="/logout">Log out</a></h2>
     </ul>
     </div>
 </div>
 
-    <p></p>
+
 <div class="flex_stocks_table">
     <table class="sortable">
         <thead class="stocks_table">
-            <th>Stock Symbol</th>
-            <th>Stock Name</th>
-            <th>User who added stock</th>
-            <th >*Buy/Hold/Sell</th>
-            <th>Comments</th>
-            <th>Actions</th>
+    <tr>
+            <th><h3 class="header_table">Stock Symbol</h3></th>
+            <th><h3 class="header_table">Stock Name</h3></th>
+            <th><h3 class="header_table">User who added stock</h3></th>
+            <th ><h3 class="header_table">*Buy/Hold/Sell</h3></th>
+            <th><h3 class="header_table">Comments</h3></th>
+            <th id="Action_Header_Width"><h3 class="header_table">Actions</h3></th>
+    </tr>
         </thead>
         <tbody class="stocks_table">
-            {% for Added_Stock in List_Stock_Objects |sort(attribute='symbol') %}
+            {% for Added_Stock in List_Stock_Objects |sort(attribute='symbol')  %}
             <tr>
                 <td>{{ Added_Stock.symbol }}</td>
                 <td>{{ Added_Stock.name }}</td>
@@ -45,10 +47,10 @@
                 <td>Sell</td>
                 {% endif %}
                 <td>{{ Added_Stock.comments }}</td>
-                <td><a href="/stocks/view/{{Added_Stock.id}}">View</a> 
+                <td class="action"><a class="view" href="/stocks/view/{{Added_Stock.id}}">View Details</a> 
                     {% if Added_Stock.selector.id == session["user_id"] %}
-                    <a href="/stocks/edit/{{Added_Stock.id}}">Edit</a> 
-                    <a href="/stocks/delete/{{Added_Stock.id}}">Delete</a> </td>
+                    <a id="action_width" class="update" href="/stocks/edit/{{Added_Stock.id}}">Update Comments</a> 
+                    <a class="delete" href="/stocks/delete/{{Added_Stock.id}}">Delete</a> </td>
                     {% endif %}
             </tr>
             {% endfor %}
