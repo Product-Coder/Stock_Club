@@ -64,5 +64,7 @@ def logout():
     return redirect ('/register_&_login_view')
 
 
-
+@app.route('/') 
+def root():
+    return redirect ('/register_&_login_view')
 
